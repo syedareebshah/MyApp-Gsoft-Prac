@@ -11,6 +11,7 @@ import {
 import Navigation from './src/config/Navigation';
 import { ThemeProvider } from './src/config/theme-context';
 import Card from './src/screens/Card';
+import Login from './src/screens/Login/Login';
 
 
 
@@ -19,7 +20,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
-    <Card />
+    <Login />
     </ThemeProvider>
   )
 };

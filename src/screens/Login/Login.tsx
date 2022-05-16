@@ -11,21 +11,27 @@ import {
     Alert,
     Switch
 } from 'react-native'
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import { ThemeContext } from '../../config/theme-context';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../RootStackPrams'
+
+type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
 
-
-const Login: React.FC = () => {
+const Login: React.FC = ({ }) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
+    const navigation = useNavigation<loginScreenProp>();
     const { dark, theme, toggle } = useContext(ThemeContext);
+
 
 
     const handleSubmit = () => {
         if (email == 'admin@gmail.com' && password == '123') {
-            Alert.alert('logged in')
+            navigation.navigate('UserDashboard')
         }
         else {
             Alert.alert('failed')
@@ -37,14 +43,14 @@ const Login: React.FC = () => {
         <ScrollView style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
             <View>
                 <Image style={styles.logo} source={require('../../assets/logo.png')} />
-                <TextInput style={[styles.inputField,{backgroundColor:theme.inputBackground}]} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
-                <TextInput style={[styles.inputField,{backgroundColor:theme.inputBackground}]} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
+                <TextInput style={[styles.inputField, { backgroundColor: theme.inputBackground }]} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
+                <TextInput style={[styles.inputField, { backgroundColor: theme.inputBackground }]} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
                 <TouchableOpacity onPress={handleSubmit}>
                     <Text style={[styles.loginBtn, { backgroundColor: theme.backgroundBtn, }]}>LOGIN</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => (console.log("Forgot Password"))}>
-                    <Text style={{ textAlign: 'center',color:theme.color }}>Forgot Password?</Text>
+                    <Text style={{ textAlign: 'center', color: theme.color }}>Forgot Password?</Text>
                 </TouchableOpacity>
 
                 <Switch
@@ -79,7 +85,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         margin: 20,
-        
+
     },
     loginBtn: {
         textAlign: 'center',

@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <ThemeProvider>
-    <Login />
+    <Navigation />
     </ThemeProvider>
   )
 };

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { DefaultTheme, DarkTheme } from 'react-native-paper';
 
-// const [dark, setDark] = useState(false)
 
 
 
@@ -25,7 +24,9 @@ export const theme = {
         ...DefaultTheme.colors,
         primary: '#3498db',
         accent: '#f1c40f',
+        backgroundClr:'black'
     },
+
 };
 
 

@@ -27,7 +27,7 @@ const Login: React.FC = ({ }) => {
     const [password, setPassword] = useState<string>('')
 
     const navigation = useNavigation<loginScreenProp>();
-    const { dark, theme, toggle } = useContext(ThemeContext);
+    // const { dark, theme, toggle } = useContext(ThemeContext);
 
 
 
@@ -47,27 +47,25 @@ const Login: React.FC = ({ }) => {
     const styles = useStyles()
 
     return (
-        <ScrollView style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-            <View>
-                
-                <Text style={{ color: colors.card }}>This is dummy</Text>
+        <ScrollView style={styles.container}>
+            <View>  
                 <Image style={styles.logo} source={require('../../assets/logo.png')} />
-                <TextInput style={[styles.inputField, { backgroundColor: theme.inputBackground }]} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
-                <TextInput style={[styles.inputField, { backgroundColor: theme.inputBackground }]} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
+                <TextInput style={styles.inputField} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
+                <TextInput style={styles.inputField} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
                 <TouchableOpacity onPress={handleSubmit}>
-                    <Text style={[styles.loginBtn, { backgroundColor: theme.backgroundBtn, }]}>LOGIN</Text>
+                    <Text style={styles.loginBtn}>LOGIN</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => (console.log("Forgot Password"))}>
-                    <Text style={{ textAlign: 'center', color: theme.color }}>Forgot Password?</Text>
+                    <Text style={{ textAlign: 'center',color:colors.text }}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <Switch
+                {/* <Switch
                     trackColor={{ false: "#767577", true: "#ccc" }}
                     thumbColor={dark ? "#fff" : "#f4f3f4"}
                     onChange={toggle} value={dark}
                     style={{ alignSelf: 'center', margin: 20 }}
-                />
+                /> */}
             </View>
         </ScrollView>
     );

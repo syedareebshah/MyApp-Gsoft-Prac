@@ -4,20 +4,17 @@ import {
     View,
     Text,
     StyleSheet,
-    ScrollView,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    Alert,
     Switch,
     FlatList
 } from 'react-native'
 
-import { ThemeContext } from '../config/theme-context';
+import { ThemeContext } from '../../config/theme-context';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from './RootStackPrams'
-import { getData } from '../config/productTitle'
+import { RootStackParamList } from '../RootStackPrams'
+import { getData } from '../../config/productTitle'
+import { useStyles } from './styles'
+
 
 
 
@@ -25,9 +22,12 @@ import { getData } from '../config/productTitle'
 
 const UserDashboard: React.FC = () => {
 
+
     const [productName, setProductName] = useState()
 
-    const { dark, theme, toggle } = useContext(ThemeContext);
+    // const { dark, theme, toggle } = useContext(ThemeContext);
+    const styles = useStyles()
+
 
     const getDetails = async () => {
         let response = await getData()
@@ -40,7 +40,7 @@ const UserDashboard: React.FC = () => {
 
     const Item = ({ title }: any) => (
         <View>
-            <Text style={{ color: theme.color }}>{title}</Text>
+            <Text style={styles.listItems}>{title}</Text>
         </View>
     )
 
@@ -50,16 +50,18 @@ const UserDashboard: React.FC = () => {
 
 
 
-    return (
-        <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
 
-            <Text style={{ color: theme.color }}>Welcome To User's Dashboard</Text>
-            <Switch
+
+    return (
+        <View style={styles.container}>
+
+            <Text style={styles.listItems}>Welcome To User's Dashboard</Text>
+            {/* <Switch
                 trackColor={{ false: "#767577", true: "#ccc" }}
                 thumbColor={dark ? "#fff" : "#f4f3f4"}
                 onChange={toggle} value={dark}
                 style={{ alignSelf: 'center', margin: 20, }}
-            />
+            /> */}
 
             <FlatList
                 data={productName}
@@ -71,13 +73,6 @@ const UserDashboard: React.FC = () => {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10
-    },
 
-
-});
 
 export default UserDashboard;

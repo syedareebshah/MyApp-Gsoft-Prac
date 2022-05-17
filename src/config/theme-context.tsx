@@ -37,7 +37,6 @@ const ThemeProvider: React.FC<Props> = ({ children, ...props }) => {
     // To toggle between dark and light modes
     const toggle = () => {
         setDark(!dark)
-        console.log('toggled');
     }
 
     // Filter the styles based on the theme selected

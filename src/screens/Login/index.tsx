@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {
     View,
     Text,
@@ -12,10 +11,13 @@ import {
     Switch
 } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack';
-
+import { useStyles } from './styles'
 import { ThemeContext } from '../../config/theme-context';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../RootStackPrams'
+import { useTheme } from '@react-navigation/native';
+
+
 
 type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -29,6 +31,8 @@ const Login: React.FC = ({ }) => {
 
 
 
+
+
     const handleSubmit = () => {
         if (email == 'admin@gmail.com' && password == '123') {
             navigation.navigate('UserDashboard')
@@ -39,9 +43,14 @@ const Login: React.FC = ({ }) => {
 
     }
 
+    const { colors } = useTheme();
+    const styles = useStyles()
+
     return (
         <ScrollView style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
             <View>
+                
+                <Text style={{ color: colors.card }}>This is dummy</Text>
                 <Image style={styles.logo} source={require('../../assets/logo.png')} />
                 <TextInput style={[styles.inputField, { backgroundColor: theme.inputBackground }]} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
                 <TextInput style={[styles.inputField, { backgroundColor: theme.inputBackground }]} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
@@ -64,40 +73,5 @@ const Login: React.FC = ({ }) => {
     );
 }
 
-const styles = StyleSheet.create({
-    container: { flex: 1 },
-    textWrapper: {
-        height: hp('70%'), // 70% of height device screen
-        width: wp('90%'),   // 80% of width device screen
-        backgroundColor: 'red'
-    },
-    myText: {
-        fontSize: hp('5%') // End result looks like the provided UI mockup
-    },
-    logo: {
-        width: hp('25%'),
-        height: hp('30%'),
-        resizeMode: 'contain',
-        alignSelf: 'center',
-
-    },
-    inputField: {
-        borderWidth: 1,
-        borderRadius: 5,
-        margin: 20,
-
-    },
-    loginBtn: {
-        textAlign: 'center',
-        fontSize: 24,
-        width: hp('30%'),
-        color: 'white',
-        borderRadius: 5,
-        padding: 8,
-        alignSelf: 'center',
-        marginTop: 10
-    }
-
-});
 
 export default Login;

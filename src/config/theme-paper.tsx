@@ -1,8 +1,5 @@
 import { DefaultTheme, DarkTheme } from 'react-native-paper';
 
-
-
-
 declare global {
     namespace ReactNativePaper {
         interface ThemeColors {
@@ -23,7 +20,6 @@ export const theme = {
         ...DefaultTheme.colors,
         primary: '#3498db',
         accent: '#f1c40f',
-        backgroundClr:'black'
     },
 
 };

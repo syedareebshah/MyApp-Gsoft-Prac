@@ -5,6 +5,7 @@ import {
     Image,
     ScrollView
 } from 'react-native'
+import { black } from 'react-native-paper/lib/typescript/styles/colors';
 import { useStyles } from './styles'
 
 const Medical: React.FC = () => {
@@ -14,12 +15,11 @@ const Medical: React.FC = () => {
 
 
     return (
-        <ScrollView >
+        <ScrollView style={styles.container}>
 
-            <View style={styles.container}>
                 <View>
                     <Image style={styles.banner} source={require('../../assets/medicine.jpeg')} />
-                    <Text style={{ fontWeight: 'bold', textAlign: 'center',margin:15 }}>SMOG</Text>
+                    <Text style={styles.heading}>SMOG</Text>
                     <Text style={{ color: 'blue', textAlign: 'center',margin:15 }}>View All</Text>
                 </View>
 
@@ -44,7 +44,6 @@ const Medical: React.FC = () => {
                     </View>
                     <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
                 </View>
-            </View>
 
 
         </ScrollView>

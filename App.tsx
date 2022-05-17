@@ -3,12 +3,6 @@ import Navigation from './src/config/Navigation';
 import { Provider as PaperProvider} from 'react-native-paper';
 import { theme } from './src/config/theme-paper';
 
-
-
-
-
-
-
 const App = () => {
 
   return (
@@ -17,7 +11,5 @@ const App = () => {
     </PaperProvider>
   )
 };
-
-
 
 export default App;

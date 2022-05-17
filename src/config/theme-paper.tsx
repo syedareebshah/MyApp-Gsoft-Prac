@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { DefaultTheme, DarkTheme } from 'react-native-paper';
 
 

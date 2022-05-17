@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState} from 'react';
 import {
     View,
     Text,
-    StyleSheet,
     ScrollView,
     Image,
     TextInput,
@@ -12,7 +11,6 @@ import {
 } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useStyles } from './styles'
-import { ThemeContext } from '../../config/theme-context';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../RootStackPrams'
 import { useTheme } from '@react-navigation/native';
@@ -27,11 +25,6 @@ const Login: React.FC = ({ }) => {
     const [password, setPassword] = useState<string>('')
 
     const navigation = useNavigation<loginScreenProp>();
-    // const { dark, theme, toggle } = useContext(ThemeContext);
-
-
-
-
 
     const handleSubmit = () => {
         if (email == 'admin@gmail.com' && password == '123') {
@@ -60,12 +53,6 @@ const Login: React.FC = ({ }) => {
                     <Text style={{ textAlign: 'center',color:colors.text }}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                {/* <Switch
-                    trackColor={{ false: "#767577", true: "#ccc" }}
-                    thumbColor={dark ? "#fff" : "#f4f3f4"}
-                    onChange={toggle} value={dark}
-                    style={{ alignSelf: 'center', margin: 20 }}
-                /> */}
             </View>
         </ScrollView>
     );

@@ -15,6 +15,10 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../RootStackPrams'
 import { useTheme } from '@react-navigation/native';
 
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { selectCount, increment, decrement, incrementByAmount,saveLoginDetails } from '../../features/counter/counterSlice';
+
+
 
 
 type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
@@ -24,10 +28,17 @@ const Login: React.FC = ({ }) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
+    const count = useAppSelector(selectCount);
+    const dispatch = useAppDispatch();
+
     const navigation = useNavigation<loginScreenProp>();
 
     const handleSubmit = () => {
         if (email == 'admin@gmail.com' && password == '123') {
+            dispatch(saveLoginDetails({
+                email,
+                password
+            }))
             navigation.navigate('UserDashboard')
         }
         else {

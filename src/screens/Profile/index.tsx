@@ -7,9 +7,11 @@ import {
     ScrollView
 } from 'react-native'
 
+
 import { useStyles } from './styles'
 
 const Profile: React.FC = () => {
+
 
 
     const styles = useStyles()

@@ -7,8 +7,8 @@ import {
 
 import { getData } from '../../config/productTitle'
 import { useStyles } from './styles'
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { selectCount, increment, decrement, incrementByAmount,saveLoginDetails } from '../../features/counter/counterSlice';
+import { useDispatch,useSelector } from 'react-redux';
+import { selectProfile,saveLoginDetails } from '../../features/profileDetails/profileSlice';
 
 
 
@@ -18,8 +18,10 @@ const UserDashboard: React.FC = () => {
     
     const styles = useStyles()
     
-    const count = useAppSelector(selectCount);
-    const dispatch = useAppDispatch();
+    const profileDetails = useSelector(selectProfile);
+
+    console.log(profileDetails);
+    
 
     const getDetails = async () => {
         let response = await getData()
@@ -43,8 +45,8 @@ const UserDashboard: React.FC = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.listItems}>Welcome To User's Dashboard</Text>
-            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Email is {count.email}</Text>
-            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Password is {count.password}</Text>
+            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Email is {profileDetails.email} </Text>
+            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Password is {profileDetails.password}</Text>
             <FlatList
                 data={productName}
                 renderItem={renderItem}

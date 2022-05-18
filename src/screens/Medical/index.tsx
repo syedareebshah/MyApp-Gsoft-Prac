@@ -7,14 +7,10 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { useStyles } from './styles'
-import { useAppSelector, useAppDispatch } from '../../hooks';
-import { selectCount, increment, decrement, incrementByAmount } from '../../features/counter/counterSlice';
 
 const Medical: React.FC = () => {
 
-    const count = useAppSelector(selectCount);
-    const dispatch = useAppDispatch();
-    console.log(count);
+    
 
 
     const styles = useStyles()

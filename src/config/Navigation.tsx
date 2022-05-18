@@ -5,7 +5,7 @@ import Login from "../screens/Login";
 import UserDashboard from "../screens/UserDashboard";
 import Profile from "../screens/Profile";
 import Medical from "../screens/Medical";
-import CounterScreen from "../screens/CounterScreen";
+// import CounterScreen from "../screens/CounterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +14,7 @@ const Navigation = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Counter" component={CounterScreen} />
+                {/* <Stack.Screen name="Counter" component={CounterScreen} /> */}
                 <Stack.Screen name="Medical" component={Medical} />
                 <Stack.Screen name="Profile" component={Profile} />
                 <Stack.Screen name="UserDashboard" component={UserDashboard} />

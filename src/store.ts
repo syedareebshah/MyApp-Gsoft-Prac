@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 // ...
-import counterReducer from './features/counter/counterSlice';
+import profileReducer from './features/profileDetails/profileSlice';
 
 
 export const store = configureStore({
@@ -8,7 +8,7 @@ export const store = configureStore({
     // posts: postsReducer,
     // comments: commentsReducer,
     // users: usersReducer,
-    counter: counterReducer
+    profileDetails: profileReducer
   },
 })
 

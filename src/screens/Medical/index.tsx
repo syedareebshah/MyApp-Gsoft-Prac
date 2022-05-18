@@ -3,12 +3,18 @@ import {
     View,
     Text,
     Image,
-    ScrollView
+    ScrollView,
+    TouchableOpacity
 } from 'react-native'
-import { black } from 'react-native-paper/lib/typescript/styles/colors';
 import { useStyles } from './styles'
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { selectCount, increment, decrement, incrementByAmount } from '../../features/counter/counterSlice';
 
 const Medical: React.FC = () => {
+
+    const count = useAppSelector(selectCount);
+    const dispatch = useAppDispatch();
+    console.log(count);
 
 
     const styles = useStyles()
@@ -17,33 +23,34 @@ const Medical: React.FC = () => {
     return (
         <ScrollView style={styles.container}>
 
-                <View>
-                    <Image style={styles.banner} source={require('../../assets/medicine.jpeg')} />
-                    <Text style={styles.heading}>SMOG</Text>
-                    <Text style={{ color: 'blue', textAlign: 'center',margin:15 }}>View All</Text>
-                </View>
+            <View>
+                <Image style={styles.banner} source={require('../../assets/medicine.jpeg')} />
+                <Text style={styles.heading}>SMOG</Text>
+                <Text style={{ color: 'blue', textAlign: 'center', margin: 15 }}>View All</Text>
+            </View>
 
-                <View style={styles.listItem}>
-                    <View>
+            <View style={styles.listItem}>
+                <View>
                     <Text style={styles.title}>Telemedicine</Text>
                     <Text>Talk to a doctor and get prescription</Text>
-                    </View>
-                    <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
                 </View>
-                <View style={styles.listItem}>
-                    <View>
+                <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
+            </View>
+            <View style={styles.listItem}>
+                <View>
                     <Text style={styles.title}>Labs</Text>
                     <Text>Get your results verified from lab</Text>
-                    </View>
-                    <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
                 </View>
-                <View style={styles.listItem}>
-                    <View>
+                <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
+            </View>
+            <View style={styles.listItem}>
+                <View>
                     <Text style={styles.title}>Pharmacy</Text>
                     <Text>Get medicines at low price</Text>
-                    </View>
-                    <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
                 </View>
+                <Image style={styles.listImg} source={require('../../assets/stethoscope.png')} />
+            </View>
+            
 
 
         </ScrollView>

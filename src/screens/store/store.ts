@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import profileReducer from './features/profileDetails/profileSlice';
-import postSaga from './postSaga';
+import profileReducer from '../../features/profileDetails/profileSlice';
+import postSaga from './sagas/postSaga';
 import createSagaMiddleware from 'redux-saga'
 
 const saga = createSagaMiddleware()

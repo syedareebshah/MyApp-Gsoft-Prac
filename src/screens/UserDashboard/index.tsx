@@ -12,24 +12,25 @@ import { selectProfile,saveLoginDetails,getPostFetch, getPostSuccess } from '../
 
 
 const UserDashboard: React.FC = () => {    
-    const [productName, setProductName] = useState<any>([])
+    // const [productName, setProductName] = useState<any>([])
     const styles = useStyles()
     const profileDetails = useSelector(selectProfile);
     const dispatch = useDispatch()
 
-    const getDetails = async () => {
-        // let response = await getData()
-        setProductName(profileDetails.posts)
-        //reading data from redux and displaying. 
-        
-    }
-    console.log(profileDetails.posts);
+    // const getDetails = async () => {
+    //     // let response = await 
+    //     setProductName(profileDetails.posts)
+    //     //reading data from redux and displaying.     
+    // }
+    console.log(profileDetails.posts?.products,"...........");
+    // console.log(productName,"..........>>>");
     
     useEffect(() => {
-        getDetails()
         dispatch(getPostFetch())
+        // getDetails()
+        console.log("runing....");
         
-    }, [])
+    }, [dispatch])
 
     const Item = ({ title }: any) => (
         <View>
@@ -47,9 +48,9 @@ const UserDashboard: React.FC = () => {
             <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Email is {profileDetails.loginDetails.email} </Text>
             <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Password is {profileDetails.loginDetails.password}</Text>
             <FlatList
-                data={productName}
+                data={profileDetails.posts?.products}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.id }
             />
         </View>
     );

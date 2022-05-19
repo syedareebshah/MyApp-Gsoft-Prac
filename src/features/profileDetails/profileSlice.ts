@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { State } from 'react-native-gesture-handler'
-import type { RootState } from '../../store'
+import type { RootState } from '../../screens/store/store'
 
 // Define a type for the slice state
 interface ProfileState {
@@ -9,7 +8,7 @@ interface ProfileState {
     password: String,
   
   },
-  posts: [],
+  posts: any,
   isloading: boolean
 }
 

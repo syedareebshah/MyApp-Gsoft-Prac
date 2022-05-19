@@ -49,6 +49,6 @@ export const profileSlice = createSlice({
 export const { saveLoginDetails, getPostSuccess, getPostFetch, getPostFailure } = profileSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectProfile = (state: RootState) => state.profileDetails.loginDetails
+export const selectProfile = (state: RootState) => state.profileDetails
 
 export default profileSlice.reducer

@@ -12,24 +12,24 @@ import { selectProfile,saveLoginDetails,getPostFetch, getPostSuccess } from '../
 
 
 const UserDashboard: React.FC = () => {    
-    const [productName, setProductName] = useState()
+    const [productName, setProductName] = useState<any>([])
     const styles = useStyles()
     const profileDetails = useSelector(selectProfile);
     const dispatch = useDispatch()
 
     const getDetails = async () => {
-        let response = await getData()
-        setProductName(response?.products)
+        // let response = await getData()
+        setProductName(profileDetails.posts)
+        //reading data from redux and displaying. 
         
     }
-
-    console.log(profileDetails,".....");
+    console.log(profileDetails.posts);
     
-
     useEffect(() => {
-        // getDetails()
-        dispatch(getPostFetch)
-    }, [dispatch])
+        getDetails()
+        dispatch(getPostFetch())
+        
+    }, [])
 
     const Item = ({ title }: any) => (
         <View>
@@ -44,8 +44,8 @@ const UserDashboard: React.FC = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.listItems}>Welcome To User's Dashboard</Text>
-            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Email is {profileDetails.email} </Text>
-            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Password is {profileDetails.password}</Text>
+            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Email is {profileDetails.loginDetails.email} </Text>
+            <Text style={[styles.listItems,{backgroundColor:'brown'}]}>Your Password is {profileDetails.loginDetails.password}</Text>
             <FlatList
                 data={productName}
                 renderItem={renderItem}

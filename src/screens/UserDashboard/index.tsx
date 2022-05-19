@@ -8,29 +8,28 @@ import {
 import { getData } from '../../config/productTitle'
 import { useStyles } from './styles'
 import { useDispatch,useSelector } from 'react-redux';
-import { selectProfile,saveLoginDetails } from '../../features/profileDetails/profileSlice';
+import { selectProfile,saveLoginDetails,getPostFetch, getPostSuccess } from '../../features/profileDetails/profileSlice';
 
 
-
-const UserDashboard: React.FC = () => {
-    
+const UserDashboard: React.FC = () => {    
     const [productName, setProductName] = useState()
-    
     const styles = useStyles()
-    
     const profileDetails = useSelector(selectProfile);
-
-    console.log(profileDetails);
-    
+    const dispatch = useDispatch()
 
     const getDetails = async () => {
         let response = await getData()
         setProductName(response?.products)
+        
     }
 
+    console.log(profileDetails,".....");
+    
+
     useEffect(() => {
-        getDetails()
-    }, [])
+        // getDetails()
+        dispatch(getPostFetch)
+    }, [dispatch])
 
     const Item = ({ title }: any) => (
         <View>

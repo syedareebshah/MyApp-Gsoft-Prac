@@ -1,5 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../screens/store/store'
+import { createAsyncThunk ,createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from '../../store/store'
+
+
+
 
 // Define a type for the slice state
 interface ProfileState {
@@ -9,7 +12,8 @@ interface ProfileState {
   
   },
   posts: any,
-  isloading: boolean
+  isloading: boolean,
+  
 }
 
 // Define the initial state using that type
@@ -20,7 +24,8 @@ const initialState: ProfileState = {
   
   },
   posts: [],
-  isloading: false
+  isloading: false,
+ 
 }
 
 export const profileSlice = createSlice({
@@ -51,3 +56,4 @@ export const { saveLoginDetails, getPostSuccess, getPostFetch, getPostFailure } 
 export const selectProfile = (state: RootState) => state.profileDetails
 
 export default profileSlice.reducer
+

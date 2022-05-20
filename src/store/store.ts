@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import profileReducer from '../../features/profileDetails/profileSlice';
+import profileReducer from '../features/profileDetails/profileSlice';
 import postSaga from './sagas/postSaga';
 import createSagaMiddleware from 'redux-saga'
+import thunk from 'redux-thunk';
 
 const saga = createSagaMiddleware()
 export const store = configureStore({
   reducer: {
-    profileDetails: profileReducer
+    profileDetails: profileReducer,
   },
   middleware:[saga]
 })

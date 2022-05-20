@@ -3,7 +3,7 @@ import Navigation from './src/config/Navigation';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { theme } from './src/config/theme-paper';
 import { Provider } from 'react-redux';
-import { store } from './src/screens/store/store';
+import { store } from './src/store/store';
 
 const App = () => {
   

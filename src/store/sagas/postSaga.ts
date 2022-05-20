@@ -1,5 +1,5 @@
 import { call, takeEvery, put } from 'redux-saga/effects'
-import { getPostSuccess } from '../../../features/profileDetails/profileSlice';
+import { getPostSuccess } from '../../features/profileDetails/profileSlice';
 
 
 function* fetchPosts() {

@@ -23,14 +23,14 @@ import auth from '@react-native-firebase/auth';
 
 
 
-type loginScreenProp = StackNavigationProp<RootStackParamList, 'Login'>;
+type SinupScreenProp = StackNavigationProp<RootStackParamList,'Sinup'>;
 
 
-const Login: React.FC = ({ }) => {
+const Sinup: React.FC = ({ }) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const dispatch = useDispatch()
-    const navigation = useNavigation<loginScreenProp>();
+    const navigation = useNavigation<SinupScreenProp>();
 
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
@@ -60,28 +60,9 @@ const Login: React.FC = ({ }) => {
     }
     function userCreate() {
         auth()
-            .createUserWithEmailAndPassword('syedareebshah806@gmail.com', 'password')
+            .createUserWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User account created & signed in!');
-            })
-            .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                }
-
-                if (error.code === 'auth/invalid-email') {
-                    console.log('That email address is invalid!');
-                }
-
-                console.error(error);
-            });
-    }
-
-    function logIn() {
-        auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(() => {
-                console.log('logged in & signed in!');
                 navigation.navigate('UserDashboard')
             })
             .catch(error => {
@@ -95,11 +76,7 @@ const Login: React.FC = ({ }) => {
 
                 console.error(error);
             });
-
     }
-
-   
-
 
 
 
@@ -126,18 +103,17 @@ const Login: React.FC = ({ }) => {
                 <Image style={styles.logo} source={require('../../assets/logo.png')} />
                 <TextInput style={styles.inputField} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
                 <TextInput style={styles.inputField} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
-                <TouchableOpacity onPress={handleSubmit}>
-                    <Text style={styles.loginBtn}>LOGIN</Text>
+                <TouchableOpacity onPress={userCreate}>
+                    <Text style={styles.loginBtn}>Sinup</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{navigation.navigate('Sinup')}}>
-                    <Text style={{ textAlign: 'center', color: colors.text , margin:20}}>Don't have an account? Sinup</Text>
+                <TouchableOpacity onPress={() => { navigation.navigate('Login') }}>
+                    <Text style={{ textAlign: 'center', color: colors.text, margin: 20 }}>Already have an account? sign </Text>
                 </TouchableOpacity>
-                
             </View>
         </ScrollView>
     );
 }
 
 
-export default Login;
+export default Sinup;

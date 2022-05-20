@@ -18,6 +18,13 @@ export const useStyles = () => {
             padding:20,
             backgroundColor:colors.placeholder,
             borderRadius:8,
+        },
+        logOutBtn:{
+            backgroundColor:'gray',
+            padding:10,
+            textAlign:'center',
+            borderRadius:6,
+            color:'white'
         }
         
     });

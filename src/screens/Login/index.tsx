@@ -126,7 +126,7 @@ const Login: React.FC = ({ }) => {
                 <Image style={styles.logo} source={require('../../assets/logo.png')} />
                 <TextInput style={styles.inputField} value={email} onChangeText={(email) => { setEmail(email) }} placeholder='enter email' />
                 <TextInput style={styles.inputField} value={password} onChangeText={(password) => { setPassword(password) }} placeholder='enter password' />
-                <TouchableOpacity onPress={handleSubmit}>
+                <TouchableOpacity onPress={logIn}>
                     <Text style={styles.loginBtn}>LOGIN</Text>
                 </TouchableOpacity>
 

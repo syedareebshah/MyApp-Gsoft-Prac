@@ -45,7 +45,7 @@ const Login: React.FC = ({ }) => {
         if (user) {
             navigation.navigate('UserDashboard')
         }
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);        
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
         return subscriber; // unsubscribe on unmount
     });
 

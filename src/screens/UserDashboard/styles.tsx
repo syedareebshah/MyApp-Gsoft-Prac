@@ -20,11 +20,28 @@ export const useStyles = () => {
             borderRadius:8,
         },
         logOutBtn:{
+            margin:5,
             backgroundColor:'gray',
             padding:10,
             textAlign:'center',
             borderRadius:6,
             color:'white'
+        },
+        inputField: {
+            borderWidth: 1,
+            borderRadius: 5,
+            margin: 20,
+            color: colors.text,
+            borderColor:colors.primary
+        },
+        dbData:{
+            display:'flex',
+            flexDirection:'row',
+            justifyContent:'space-between',
+            margin:10,
+            backgroundColor:'aqua',
+            padding:10,
+
         }
         
     });

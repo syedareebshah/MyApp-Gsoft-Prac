@@ -32,32 +32,11 @@ const Sinup: React.FC = ({ }) => {
     const dispatch = useDispatch()
     const navigation = useNavigation<SinupScreenProp>();
 
-    const [initializing, setInitializing] = useState(true);
-    const [user, setUser] = useState();
-
-    function onAuthStateChanged(user: any) {
-        setUser(user);
-        if (initializing) setInitializing(false);
-    }
-
-    useEffect(() => {
-        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
-    }, []);
+    
+    
 
 
-    function firebaseAuthentication() {
-        if (initializing) return null
-
-        if (user) {
-            console.log("found");
-
-        }
-        else {
-            console.log("not found");
-
-        }
-    }
+    
     function userCreate() {
         auth()
             .createUserWithEmailAndPassword(email, password)

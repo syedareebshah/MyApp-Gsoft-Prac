@@ -48,11 +48,8 @@ const UserDashboard: React.FC = () => {
 
     useEffect(() => {
         dispatch(getPostFetch())
-        console.log("runing....");
-
         getUserData()
-
-    }, [dispatch,userData])
+    },[])
 
 
 
@@ -67,13 +64,8 @@ const UserDashboard: React.FC = () => {
                     tempArray.push(documentSnapshot.data())
                 });
                 setUserData(tempArray)
-
             });
-
     }
-
-
-
 
     const writingDbData = async () => {
         firestore()
@@ -84,6 +76,7 @@ const UserDashboard: React.FC = () => {
             })
             .then(() => {
                 console.log('User added!');
+                getUserData()
             });
     }
 
@@ -94,9 +87,6 @@ const UserDashboard: React.FC = () => {
     function onError(error: any) {
         console.error(error);
     }
-
-    //reading data from DB
-
 
     const Item = ({ title }: any) => (
         <View>
